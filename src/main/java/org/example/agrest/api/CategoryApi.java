@@ -1,19 +1,22 @@
 package org.example.agrest.api;
 
 import io.agrest.Ag;
+import io.agrest.AgRequest;
 import io.agrest.DataResponse;
 import io.agrest.SimpleResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
 import org.example.agrest.persistent.Category;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Configuration;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
+@Tags(value = @Tag(name = "category", description = "API related to bookstore categories"))
 @Path("category")
 @Produces(MediaType.APPLICATION_JSON)
 public class CategoryApi {
@@ -22,12 +25,36 @@ public class CategoryApi {
     private Configuration config;
 
     @POST
-    public SimpleResponse create(String data) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Operation
+    public SimpleResponse create(
+            @RequestBody(description = "JSON object representing category") String data
+    ) {
         return Ag.create(Category.class, config).sync(data);
     }
 
     @GET
-    public DataResponse<Category> getAll(@Context UriInfo uriInfo) {
+    @Path("implicit_keys")
+    @Operation
+    public DataResponse<Category> getAll_UriInfo(
+            @Context UriInfo uriInfo
+    ) {
         return Ag.select(Category.class, config).uri(uriInfo).get();
+    }
+
+    @GET
+    @Path("restricted_keys")
+    @Operation
+    public DataResponse<Category> getAll_ExplicitKeys(
+            @QueryParam("include") String include,
+            @QueryParam("sort") String sort,
+            @QueryParam("dir") String dir
+    ) {
+        AgRequest request = Ag.request(config)
+                .addInclude(include)
+                .addOrdering(sort, dir)
+                .build();
+
+        return Ag.select(Category.class, config).request(request).get();
     }
 }

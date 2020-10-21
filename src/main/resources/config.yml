@@ -1,2 +1,15 @@
 jersey:
   urlPattern: '/api/*'
+
+swagger:
+  specs:
+    default:
+      pathJson: "model/openapi.json"
+      pathYaml: "model/openapi.yaml"
+      overrideSpec: "classpath:openapi-header.yml"
+      resourcePackages:
+        - "org.example.agrest.api"
+
+swaggerui:
+  default:
+    specPath: "api/model/openapi.json"
