@@ -5,6 +5,7 @@ import io.agrest.AgRequest;
 import io.agrest.DataResponse;
 import io.agrest.SimpleResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
@@ -35,7 +36,7 @@ public class CategoryApi {
 
     @GET
     @Path("implicit_keys")
-    @Operation
+    @Operation(description = "Gets categories per supplied criteria. Supports of Agrest keys")
     public DataResponse<Category> getAll_UriInfo(
             @Context UriInfo uriInfo
     ) {
@@ -44,7 +45,7 @@ public class CategoryApi {
 
     @GET
     @Path("restricted_keys")
-    @Operation
+    @Operation(description = "Gets categories per supplied criteria. Supports a subset of Agrest keys")
     public DataResponse<Category> getAll_ExplicitKeys(
             @QueryParam("include") String include,
             @QueryParam("sort") String sort,
