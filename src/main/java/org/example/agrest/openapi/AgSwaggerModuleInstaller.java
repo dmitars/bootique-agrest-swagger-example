@@ -23,9 +23,9 @@ public class AgSwaggerModuleInstaller implements AgFeatureProvider {
     }
 
     private void installConverter(ModelConverter converter) {
-        // since ModelConverters is a static singleton, to make sure we are not registering the same converter
-        // more than once remove any previous registration
-        ModelConverters.getInstance().removeConverter(converter);
-        ModelConverters.getInstance().addConverter(converter);
+        // since ModelConverters is a static singleton, let's make sure we are not registering the same converter twice
+        if (!ModelConverters.getInstance().getConverters().contains(converter)) {
+            ModelConverters.getInstance().addConverter(converter);
+        }
     }
 }
