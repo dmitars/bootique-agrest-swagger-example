@@ -60,27 +60,25 @@ public class AgProtocolModelConverter extends AgModelConverter {
 
         LOGGER.debug("resolve DataResponse ({})", wrapped);
 
-        String name = "DataResponse";
+
         Map<String, Schema> properties = new HashMap<>();
 
         // TODO: handled non-generified DataResponse too
         AgModelType entityType = wrapped.containedType(0);
-        Schema data = context.resolve(new AnnotatedType().type(entityType.getType())
-                .schemaProperty(true)
-                .skipSchemaName(true)
-                .resolveAsRef(true)
-                .propertyName("data"));
+        Schema entitySchema = context.resolve(new AnnotatedType().type(entityType.getType()));
+        Schema entitySchemaRef = new Schema().$ref(RefUtils.constructRef(entitySchema.getName()));
 
-        properties.put("data", new ArraySchema().items(data));
+        properties.put("data", new ArraySchema().items(entitySchemaRef));
         properties.put("total", new IntegerSchema());
 
+        String name = "DataResponse(" + entitySchema.getName() + ")";
         Schema schema = new ObjectSchema()
                 .name(name)
                 .required(asList("data", "total"))
                 .properties(properties);
 
         context.defineModel(name, schema);
-        return (type.isResolveAsRef())
+        return type.isResolveAsRef()
                 ? new Schema().$ref(RefUtils.constructRef(name))
                 : schema;
     }
