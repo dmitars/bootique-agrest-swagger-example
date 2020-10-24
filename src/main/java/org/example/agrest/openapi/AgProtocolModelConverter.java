@@ -98,7 +98,7 @@ public class AgProtocolModelConverter extends AgModelConverter {
                 .properties(properties);
 
         context.defineModel(name, schema);
-        return (type.isResolveAsRef())
+        return type.isResolveAsRef()
                 ? new Schema().$ref(RefUtils.constructRef(name))
                 : schema;
     }
