@@ -1,6 +1,13 @@
 jersey:
   urlPattern: '/api/*'
 
+log:
+  loggers:
+    "io.swagger.v3.core.converter":
+      level: debug
+    "org.example.agrest.openapi":
+      level: debug
+
 swagger:
   specs:
     default:

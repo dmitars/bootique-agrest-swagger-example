@@ -9,9 +9,11 @@ public class AgSwaggerModule implements Module {
     @Override
     public void configure(Binder binder) {
         binder.bindList(String.class, AgEntityModelConverter.BINDING_ENTITY_PACKAGES);
+
+        binder.bind(AgProtocolModelConverter.class).toInstance(AgProtocolModelConverter.getInstance());
         binder.bind(AgEntityModelConverter.class).to(AgEntityModelConverter.class);
 
-        // TODO: this must be dynamic and managed by extender
+        // TODO: this must be dynamic and managed by an extender
         binder.bindList(String.class, AgEntityModelConverter.BINDING_ENTITY_PACKAGES)
                 .add(Category.class.getPackage().getName());
     }
