@@ -78,9 +78,7 @@ public class AgEntityModelConverter extends AgModelConverter {
         }
 
         Schema<?> schema = new ObjectSchema().name(name).properties(properties);
-        return type.isResolveAsRef()
-                ? new Schema().$ref(RefUtils.constructRef(name))
-                : schema;
+        return onSchemaResolved(type, context, schema);
     }
 
     protected Schema doResolveAttribute(AgAttribute attribute, ModelConverterContext context) {

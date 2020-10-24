@@ -77,10 +77,7 @@ public class AgProtocolModelConverter extends AgModelConverter {
                 .required(asList("data", "total"))
                 .properties(properties);
 
-        context.defineModel(name, schema);
-        return type.isResolveAsRef()
-                ? new Schema().$ref(RefUtils.constructRef(name))
-                : schema;
+        return onSchemaResolved(type, context, schema);
     }
 
     protected Schema resolveAsSimpleResponse(AnnotatedType type, ModelConverterContext context) {
@@ -97,9 +94,6 @@ public class AgProtocolModelConverter extends AgModelConverter {
                 .required(asList("success"))
                 .properties(properties);
 
-        context.defineModel(name, schema);
-        return type.isResolveAsRef()
-                ? new Schema().$ref(RefUtils.constructRef(name))
-                : schema;
+        return onSchemaResolved(type, context, schema);
     }
 }
