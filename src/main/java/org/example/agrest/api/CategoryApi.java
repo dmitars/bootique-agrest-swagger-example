@@ -5,7 +5,6 @@ import io.agrest.AgRequest;
 import io.agrest.DataResponse;
 import io.agrest.SimpleResponse;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
@@ -17,7 +16,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
-@Tags(value = @Tag(name = "category", description = "API related to bookstore categories"))
+@Tags(value = @Tag(name = "category", description = "API serving bookstore categories"))
 @Path("category")
 @Produces(MediaType.APPLICATION_JSON)
 public class CategoryApi {
@@ -36,7 +35,7 @@ public class CategoryApi {
 
     @GET
     @Path("implicit_keys")
-    @Operation(description = "Gets categories per supplied criteria. Supports of Agrest keys")
+    @Operation(description = "Gets categories per supplied criteria. Supports all Agrest keys")
     public DataResponse<Category> getAll_UriInfo(
             @Context UriInfo uriInfo
     ) {
