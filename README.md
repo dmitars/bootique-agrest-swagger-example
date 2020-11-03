@@ -1,8 +1,8 @@
-# agrest-swagger-example
+# bootique-agrest-swagger-example
 
-Agrest OpenAPI / Swagger experiments
-
-_Work in progress_
+Agrest OpenAPI / Swagger integration. Requires:
+* Agrest 4.1 or newer
+* Bootique 2.0.B1 or newer
 
 
 ## App URLs
