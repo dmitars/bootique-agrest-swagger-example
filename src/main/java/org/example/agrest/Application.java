@@ -3,9 +3,11 @@ package org.example.agrest;
 import io.bootique.BQCoreModule;
 import io.bootique.BaseModule;
 import io.bootique.Bootique;
+import io.bootique.agrest.cayenne42.swagger.AgrestSwaggerModule;
 import io.bootique.di.Binder;
 import io.bootique.jersey.JerseyModule;
 import org.example.agrest.api.CategoryApi;
+import org.example.agrest.persistent.Book;
 
 public class Application extends BaseModule {
 
@@ -21,5 +23,6 @@ public class Application extends BaseModule {
     public void configure(Binder binder) {
         BQCoreModule.extend(binder).addConfig("classpath:config.yml");
         JerseyModule.extend(binder).addPackage(CategoryApi.class);
+        AgrestSwaggerModule.extend(binder).addModelPackage(Book.class);
     }
 }
