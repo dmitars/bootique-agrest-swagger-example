@@ -46,11 +46,6 @@
                 <artifactId>derby</artifactId>
                 <version>10.13.1.1</version>
             </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
-                <version>1.7.25</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -60,8 +55,8 @@
             <artifactId>bootique-agrest-cayenne42</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.bootique.swagger</groupId>
-            <artifactId>bootique-swagger</artifactId>
+            <groupId>io.bootique.agrest</groupId>
+            <artifactId>bootique-agrest-cayenne42-swagger</artifactId>
         </dependency>
         <dependency>
             <groupId>io.bootique.swagger</groupId>
