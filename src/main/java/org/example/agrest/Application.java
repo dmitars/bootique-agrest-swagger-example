@@ -23,6 +23,10 @@ public class Application extends BaseModule {
     public void configure(Binder binder) {
         BQCoreModule.extend(binder).addConfig("classpath:config.yml");
         JerseyModule.extend(binder).addPackage(CategoryApi.class);
+
+        // important to specify Agrest model package(s) explicitly. Classes referenced from API resources that are
+        // not in these packages will be exposed as OpenAPI schemas generated via a default reflection mechanism,
+        // and will not align with Agrest model
         AgrestSwaggerModule.extend(binder).addModelPackage(Book.class);
     }
 }

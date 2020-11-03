@@ -54,14 +54,19 @@
             <groupId>io.bootique.agrest</groupId>
             <artifactId>bootique-agrest-cayenne42</artifactId>
         </dependency>
+
+        <!-- This enables Agrest extensions for Swagger -->
         <dependency>
             <groupId>io.bootique.agrest</groupId>
             <artifactId>bootique-agrest-cayenne42-swagger</artifactId>
         </dependency>
+
+        <!-- This is a Swagger UI console -->
         <dependency>
             <groupId>io.bootique.swagger</groupId>
             <artifactId>bootique-swagger-ui</artifactId>
         </dependency>
+
         <dependency>
             <groupId>io.bootique.logback</groupId>
             <artifactId>bootique-logback</artifactId>
