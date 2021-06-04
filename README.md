@@ -48,6 +48,39 @@ swaggerui:
     specPath: "api/model/openapi.json"
 ```
 
+## Available commands
+
+To see all available commands run demo without arguments:
+
+```
+java -jar bootique-swagger-example-demo/target/bootique-swagger-example-demo-1.0-SNAPSHOT.jar
+```
+
+You will see help:
+
+```
+NAME
+      agrest-swagger-example-1.0-SNAPSHOT.jar
+
+OPTIONS
+      -c yaml_location, --config=yaml_location
+           Specifies YAML config location, which can be a file path or a URL.
+
+      -h, --help
+           Prints this message.
+
+      -H, --help-config
+           Prints information about application modules and their configuration options.
+
+      -s, --server
+           Starts Jetty server.
+```
+
+## Run the demo
+
+```
+java -jar agrest-swagger-example-demo/target/agrest-swagger-example-demo-1.0-SNAPSHOT.jar --server
+```
 
 ## App URLs
 

@@ -21,7 +21,7 @@ public class Application extends BaseModule {
 
     @Override
     public void configure(Binder binder) {
-        BQCoreModule.extend(binder).addConfig("classpath:config.yml");
+        BQCoreModule.extend(binder).addConfig("classpath:default.yml");
         JerseyModule.extend(binder).addPackage(CategoryApi.class);
 
         // important to specify Agrest model package(s) explicitly. Classes referenced from API resources that are
