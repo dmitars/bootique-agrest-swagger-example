@@ -5,6 +5,9 @@ Agrest OpenAPI / Swagger integration example. Requires:
 * Agrest 4.1 or newer
 * Bootique 2.0.B1 or newer
 
+You can find different versions of framework in use at
+* [2.x](https://github.com/bootique-examples/bootique-agrest-swagger-example/tree/2.x)
+
 ## Integration approach
 
 Include `bootique-agrest-cayenne42-swagger` dependency:
